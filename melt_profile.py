@@ -33,19 +33,20 @@ increment = input("melt_temperature_increment: ")
 
 final = input("job_max_melt_temperature: ")
 
+g=int(input("Enter the initial ordering no: "))
+
 initial = int (initial)
 increment =int(increment)
 final = int(final)
 innerloops = (final - initial + 1) /  25
 innerloops = float(innerloops)
 
-print(innerloops)
+
 
 if int(innerloops) < innerloops :
                                    innerloops = int(innerloops) +1
 
-print(innerloops)
-print(int(innerloops))
+
 for i in range(n):
 
                 
@@ -63,12 +64,12 @@ for i in range(n):
                                                 
                                                 if k==(int(innerloops)-1):
                                                                      link4 = driver.find_element_by_id("partition_job_max_melt_temperature").send_keys(final)
-                                                                     print("this is if stement ",final)
+                                                                     #print("this is if stement ",final)
                                                                      tempfinal = final
 
                                                 elif k!=(int(innerloops)-1):                  
                                                                      link4 = driver.find_element_by_id("partition_job_max_melt_temperature").send_keys((k+1)*final/innerloops)
-                                                                     print("this is elif stement ",(k+1)*final/innerloops)
+                                                                     #print("this is elif stement ",(k+1)*final/innerloops)
                                                                      tempfinal = (k+1)*final/innerloops
                                                 
                                                 link5 = driver.find_element_by_id("partition_sequence_0_contents").send_keys(numbers[i])
@@ -98,11 +99,11 @@ for i in range(n):
  
 
                                                 html = driver.page_source
-                                                fileToWrite = open(str(i+1)+"_"+str(tempinitial)+"_"+str(tempfinal)+".txt", "w")
+                                                fileToWrite = open(str(i+1+g)+"_"+str(tempinitial)+"_"+str((int)(tempfinal))+".txt", "w")
                                                 fileToWrite.write(html)
                                                 fileToWrite.close()
 
-                                                print(i+1,":",tempinitial,"_",tempfinal," ","DONE")
+                                                print(i+1+g,":",tempinitial,"_",(int)(tempfinal)," ","DONE")
                                                 time.sleep(5)
                                                              
 
