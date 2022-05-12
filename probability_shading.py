@@ -45,6 +45,7 @@ tempinitial = initial
 increment =int(increment)
 final = int(final)
 
+g=int(input("Enter the initial ordering no: "))
 loops2 = (final - initial + 1) /  increment
 
 loops2 = int (loops2)
@@ -95,7 +96,17 @@ for i in range(n):
                                   driver.get( src)
                                   
                                   
-                                  driver.save_screenshot(str(i+1)+"..."+ str(initial)+'.a'+'.png')
+                                  #driver.save_screenshot(str(i+1)+"..."+ str(initial)+'.a'+'.png')
+                                  if (i+1+j)<10 :
+                                             driver.save_screenshot(str(i+1+g)+"00"+str(initial)+'.a'+'.png')
+
+                                  elif (i+1+j)<100 :
+                                             driver.save_screenshot(str(i+1+g)+"0"+str(initial)+'.a'+'.png') 
+
+                                  else :
+                                          driver.save_screenshot(str(i+1+g)+str(initial)+'.a'+'.png')                     
+
+
                                   print('/',end='')
                                   
                                   initial = initial + increment
