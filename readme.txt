@@ -37,3 +37,4 @@ important Downloads
 --- pip install selenium (command)
 --- download chromedriver and put it in this path "C:\Program Files (x86)\chromedriver" in windows 
 --- for mac the path in the code needs to be changed to the location where the chromedriver is put       
+--- for windows the images are stored in C:\Users\Admin 
