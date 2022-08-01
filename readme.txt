@@ -2,8 +2,8 @@ this file contains 5 programs and has example videos
 
 1.Sequence Generator code and Executable file
 
-1.1 it generates different gene mutation of the given gene by replacing each nuecleotide one at a time. 
-1.2 Each neucleotide is replaced with 3 other nuecleotides and 1 combination of absense of any nucleotide.
+1.1 it generates different gene mutation of the given gene by replacing each nucleotide one at a time. 
+1.2 Each neucleotide is replaced with 3 other nucleotides and 1 combination of absense of any nucleotide.
 1.3 both code and exe file is present for use
 1.4 first line asks the length of the protein
 1.5 then gene is entered without any spaces
