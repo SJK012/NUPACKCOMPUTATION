@@ -1,0 +1,77 @@
+import math
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+
+a=int(input("Enter a: "))
+Tinitial=int(input("Enter intial temperature: "))
+Tincrement=int(input("Enter temperature increment: "))
+Tfinal=int(input("Enter final temperature: "))
+kinitial=int(input("Enter intial k: "))
+kincrement=int(input("Enter k increment: "))
+kfinal=int(input("Enter final k: "))
+
+xpoints = []
+ypoints = []
+ydpoints = []
+x1peakpoints =[]
+x2peakpoints =[]
+ydpeakpoints = []
+
+figure, axis = plt.subplots(2, 2 ,figsize=(15, 15))
+
+for k in range(kinitial, kfinal,kincrement) :
+ 
+                                              maxyd = -9999999
+                                              maxT = -9999999
+                                             
+                                              for T in range(Tinitial, Tfinal,Tincrement) : 
+                                                                                            y = 1.0/(1+k*np.exp(a/T))*1.0 
+                                                                                            yd = k*a*np.exp(a/T)/((T**2)*(1+k*np.exp(a/T))**2) 
+                                                                                            
+                                                                                            xpoints.append(T)
+                                                                                            ydpoints.append(yd)
+                                                                                            ypoints.append(y)
+                                                                                            
+                                                                                             
+                                                                                            if yd > maxyd:
+                                                                                                          maxyd = yd
+                                                                                                          maxT = T
+                                                                                                          
+                                              
+                                            
+                                              axis[0,0].semilogx(xpoints, ypoints)
+                                              ydpeakpoints.append(maxyd)
+                                              x1peakpoints.append(maxT)
+                                              x2peakpoints.append((1/maxT)**2)
+                                            
+                                              axis[0,1].semilogx(xpoints, ydpoints)  
+                                              ypoints.clear()
+                                              xpoints.clear()
+                                              ydpoints.clear()
+                                           
+
+axis[1,0].plot(x1peakpoints, ydpeakpoints,"*" )
+axis[1,1].loglog(x2peakpoints, ydpeakpoints, "*")
+
+axis[0,0].set_xlabel("Temperature (K)")
+axis[0,0].set_ylabel("Response Y")
+axis[0,0].set_title("Response Curve")
+
+axis[0,1].set_xlabel("Temperature (K)")
+axis[0,1].set_ylabel("Gain")
+axis[0,1].set_title("Gain Profile")
+
+axis[1,0].set_xlabel(" Threshold Temperature (K)")
+axis[1,0].set_ylabel("Peak Gain")
+axis[1,0].set_title("Peak Gain vs Threshold Curve")
+
+axis[1,1].set_xlabel("log 1/Temperature(K)^2")
+axis[1,1].set_ylabel("Peak Gain")
+axis[1,1].set_title("Plot of g_{max} and (1/T_{Th})^2")
+
+
+plt.show()
+
+

@@ -1,0 +1,133 @@
+from asyncore import write
+from msilib.schema import File
+import os
+from tkinter.filedialog import SaveAs
+from webbrowser import Chrome
+import warnings
+import goto
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+from selenium.webdriver.common.action_chains import ActionChains
+import codecs
+
+
+ 
+warnings.filterwarnings("ignore")
+PATH='C:\Program Files (x86)\chromedriver '
+driver= webdriver.Chrome(PATH)
+driver.minimize_window()
+# Enter the Sequence here
+numbers =[]
+n=int(input("Enter the Number of Sequences: "))
+
+print("Enter The Sequences")
+for k in range (0,n):
+   ele = input()
+
+   numbers.append(ele)
+
+initial = input("Enter the initial temperature: ")
+
+increment = input("Enter the increment temperature: ")
+
+final = input("Enter the final temperature: ")
+
+initial = int (initial)
+tempinitial = initial
+increment = int(increment)
+final = int(final)
+
+
+for i in range( n):
+                      
+                                               j = initial
+                    
+                                               while j < final+1 :
+                                                                  
+                                                                  driver.get( 'http://www.nupack.org/partition/new')
+                              
+                                                                  print(numbers[i],j, end = '')
+                                                                  link1 = driver.find_element(By.ID, "partition_job_temperature").clear()
+                                  
+                                  
+                                                                  link1 = driver.find_element(By.ID, "partition_job_temperature").send_keys(j)
+
+                                 
+
+                
+                                                                  link5 = driver.find_element(By.ID, "partition_sequence_0_contents").send_keys(numbers[i])
+                              
+
+                              
+                                                                  element1 = driver.find_element(By.NAME, "commit")
+                                                                  element1.click()
+                                 
+
+
+                                                                  try:
+                                                                      r2= WebDriverWait(driver, 20 ).until(EC.presence_of_element_located((By.ID,"fullsize")))
+  
+                                                                      r2.click()
+                                                                      print('.',end ='')
+                                                                      
+
+                                                                  except:
+                                                                         
+                                                                         continue
+
+                                                                  print('.',end ='')
+                                  
+
+                                                                  img = driver.find_element(By.XPATH, '//div[@id="fullsize"]/img')
+                                  
+                                                                  src = img.get_attribute('src')
+                                 
+                                                                  print('.',end ='')
+                                                                  driver.get( src)
+                                  
+                                  
+                                                                  if(i<10):
+                                                                          if (j<10) :
+                                                                                     driver.save_screenshot("00"+str(i+1)+"00"+str(j)+'.ps'+'.png')
+
+                                                                          elif (j<100) :
+                                                                                        driver.save_screenshot("00"+str(i+1)+"0"+str(j)+'.ps'+'.png') 
+
+                                                                          else :
+                                                                                driver.save_screenshot("00"+str(i+1)+str(j)+'.ps'+'.png')    
+                                                
+                                                                  elif(i<100):
+                                                                              if (j<10):
+                                                                                         driver.save_screenshot("0"+str(i+1)+"00"+str(j)+'.ps'+'.png')
+ 
+                                                                              elif (j<100) :
+                                                                                            driver.save_screenshot("0"+str(i+1)+"0"+str(j)+'.ps'+'.png') 
+
+                                                                              else :
+                                                                                    driver.save_screenshot("0"+str(i+1)+str(j)+'.ps'+'.png')   
+                                  
+                                                                  else :
+                                                                      if (j<10) :
+                                                                                 driver.save_screenshot(str(i+1)+"00"+str(j)+'.ps'+'.png')
+
+                                                                      elif (j<100) :
+                                                                                    driver.save_screenshot(str(i+1)+"0"+str(j)+'.ps'+'.png') 
+
+                                                                      else :
+                                                                            driver.save_screenshot(str(i+1)+str(j)+'.ps'+'.png') 
+
+
+                                                                  print('/',end='')
+                                                                  print('Saved')
+                                                                  j = j + increment
+                 
+
+
+                         
+time.sleep(5)   
+print("ALL CASES DONE AND SAVED")
+driver.close()
