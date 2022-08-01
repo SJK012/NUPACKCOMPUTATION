@@ -1,4 +1,4 @@
-this file contains 5 programs and has example videos  
+this file contains 7 programs and has example videos  
 
 1.Sequence Generator code and Executable file
 
@@ -23,13 +23,22 @@ this file contains 5 programs and has example videos
 3.3 saves the images in a specific format 000000.ids 
 3.4 for eaxample 178006.ids means identity_shading image of the 178th gene at 6 degree Centigrade
     005098.ids means identity_shading image of the 5th at 98 degree Centigrade
+    
+4.Melt_profile code
 
-4.Python Programs for 2 MATLAB codes
+4.1 downloads the Melt_profile images of the gene
+4.2 multiple genes can be given all at the same time
+4.3 saves the images in a specific format 0 00_00
+4.4 for eaxample 1 25_50 means Melt_profile images of the 1th gene from 25 degree Centigrade to 50 degree centigrade
+    
+       
+5.Python Programs for 2 MATLAB codes
+5.1 First Code keeps k parameter constant and varies a and T parameters.
+5.2 Second Code keeps a parameter constant and varies k and T parameters.
+5.3 In both codes Four Different graphs are plotted.
+5.4 These are Response Curve, Gain Profile, Peak Gain vs Threshold Curve , Plot of g_{max} and (1/T_{Th})^2
 
-4.1 First Code keeps k parameter constant and varies a and T parameters.
-4.2 Second Code keeps a parameter constant and varies k and T parameters.
-4.3 In both codes Four Different graphs are plotted.
-4.4 These are Response Curve, Gain Profile, Peak Gain vs Threshold Curve , Plot of g_{max} and (1/T_{Th})^2
+6.Matlab video making code 
 
 
 important Downloads
